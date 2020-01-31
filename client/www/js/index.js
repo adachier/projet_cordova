@@ -10,6 +10,7 @@ function startApp() {
 
   let showHebergement = document.getElementById('show-hebergement')
   let showInteret = document.getElementById('show-interet')
+  let ul = document.getElementById('write')
 
   var btnPostHebergement = document.getElementById('send-hebergement');
   btnPostHebergement.addEventListener('click', () => {
@@ -40,8 +41,13 @@ function startApp() {
   
   
   showHebergement.addEventListener('click', () => {
-      $.get("http://localhost:3000/hebergement", function (data) {
-          console.log(data)
+      $.get("http://localhost:3000/hebergement", function (dataH) {
+          console.log(dataH)
+          var content = ''
+          for (let i = 0; i < dataH.dataH.length; i++) {
+              content += '<li>' + dataH.dataH[i].name + '</li>'
+          }
+          ul.innerHTML = content
           pageList.style.display = 'inline-block'
       })
       .fail(function(e){
@@ -52,8 +58,13 @@ function startApp() {
   
   
   showInteret.addEventListener('click', function (e) {
-    $.get("http://localhost:3000/interet", function (data) {
-        console.log(data)
+    $.get("http://localhost:3000/interet", function (dataI) {
+        console.log(dataI)
+        var content = ''
+        for (let i = 0; i < dataI.dataI.length; i++) {
+            content += '<li>' + dataI.dataI[i].name + '</li>'
+        }
+        ul.innerHTML = content
         pageList.style.display = 'inline-block'
     })
     .fail(function(e){
