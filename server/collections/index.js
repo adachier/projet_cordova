@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const db_url = process.env.DB_URL || 'mongodb://127.0.0.1:27017/db_cordova';
+const db_url = process.env.DB_URL || 'mongodb://127.0.0.1:27017/db_cordova10';
 
 var connection;
 function tryConnect() {
@@ -15,10 +15,12 @@ function tryConnect() {
 }
 tryConnect();
 
-const Data = require('./Data')(connection);
+const Hebergement = require('./Hebergement')(connection);
+const Interet = require('./Interet')(connection);
 
 const collections = {
-  Data,
+  Hebergement,
+  Interet
 };
 
 module.exports = collections;

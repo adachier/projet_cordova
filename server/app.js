@@ -24,8 +24,11 @@ app.use(require('./headersConf'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.get('/getdata', require('./routes/getdata'));
-app.post('/postdata', require('./routes/postdata'));
+app.get('/hebergement', require('./routes/getHebergement'));
+app.post('/postHebergement', require('./routes/postHebergement'));
+
+app.get('/interet', require('./routes/getInteret'));
+app.post('/postInteret', require('./routes/postInteret'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
